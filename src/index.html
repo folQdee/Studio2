@@ -10,11 +10,6 @@
 
     <header class="header">
         <div class="header-left">
-            <nav class="header-nav">
-                <a href="#services" class="nav-link">Услуги</a>
-                <a href="#artists" class="nav-link">Исполнители</a>
-                <a href="#home" class="nav-link">Главная</a>
-            </nav>
         </div>
         
         <div class="header-center">
@@ -50,180 +45,195 @@
     </section>
 
     <main class="main-content">
-        <section id = "services" class="services-page">
+        <section id="services" class="services-page">
             <h1 class="services-title">Наши услуги</h1>
             <div class="services-grid">
+                <!-- Карточка 1 - Аранжировка -->
                 <div class="service-card">
                     <div class="service-header">
-                        <div class="service-text">Запись и сведение треков</div>
+                        <div class="service-text">Аранжировка</div>
                         <div class="service-toggle">+</div>
                     </div>
                     <div class="service-details">
-                        <p>Профессиональная запись вокала и инструментов в студии с последующим качественным сведением. Работаем со всеми жанрами.</p>
+                        <!-- Описание услуги -->
+                        <p>Создание профессиональных аранжировок для ваших композиций...</p>
                         <ul class="service-features">
-                            <li>Запись вокала</li>
-                            <li>Запись инструментов</li>
-                            <li>Сведение треков</li>
-                            <li>Редактирование</li>
+                            <li>Работа в различных стилях и жанрах</li>
+                            <li>Использование живых и виртуальных инструментов</li>
+                            <li>Адаптация под ваш исполнительский стиль</li>
+                            <li>Создание демо-версий</li>
                         </ul>
+                        
+                        <!-- Блок с несколькими специалистами -->
+                        <div class="service-artists">
+                            <h3>Наши специалисты по аранжировке:</h3>
+                            <div class="artist-mini-cards">
+                                <!-- Специалист 1 -->
+                                <div class="artist-mini-card" data-artist="artist1">
+                                    <img src="./images/team/Seva.jpg" alt="МВА">
+                                    <div class="artist-mini-info">
+                                        <h4>Всеволов Ангуйай</h4>
+                                        <p>Опыт: 6 лет</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Специалист 2 -->
+                                <div class="artist-mini-card" data-artist="artist2">
+                                    <img src="./images/team/Egor.jpg" alt="Максим Петров">
+                                    <div class="artist-mini-info">
+                                        <h4>Горный серков</h4>
+                                        <p>Опыт: 888 лет</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Специалист 3 -->
+                                <div class="artist-mini-card" data-artist="artist3">
+                                    <img src="./images/team/Vadim.jpg" alt="Владимир">
+                                    <div class="artist-mini-info">
+                                        <h4>Владимир Новый</h4>
+                                        <p>Опыт: 5 лет</p>
+                                    </div>
+                                </div>
+
+                                <!-- Специалист 4 -->
+                                <div class="artist-mini-card" data-artist="artist4">
+                                    <img src="./images/team/Vadim.jpg" alt="Дмитрий Иванов">
+                                    <div class="artist-mini-info">
+                                        <h4>Владик Новый</h4>
+                                        <p>Опыт: 5 лет</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <a href="https://web.telegram.org/a/#5000797176" class="service-button" target="_blank">Узнать цены</a>
                     </div>
-                </div>
-                
-                <div class="services-grid">
-                    <!-- Карточка 1 -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-text">Аранжировка</div>
-                            <div class="service-toggle">+</div>
+                    
+                    <!-- Полные карточки всех специалистов (скрыты по умолчанию) -->
+                    <div class="artist-full-card" id="artist1">
+                        <div class="artist-image">
+                            <img src="./images/team/Seva.jpg" alt="">
                         </div>
-                        <div class="service-details">
-                            <p>Создание профессиональных аранжировок для ваших композиций с учетом современных тенденций и ваших пожеланий.</p>
-                            <ul class="service-features">
-                                <li>Работа в различных стилях и жанрах</li>
-                                <li>Использование живых и виртуальных инструментов</li>
-                                <li>Адаптация под ваш исполнительский стиль</li>
-                                <li>Создание демо-версий</li>
-                            </ul>
-                            <a href="https://web.telegram.org/a/#5000797176" class="service-button" target="_blank">Узнать цены</a>
+                        <div class="artist-info">
+                            <h3>Всеволов Шуйу</h3>
+                            <p class="artist-specialty">Звукорежиссер, продюсер</p>
+                            <p class="artist-experience">Опыт: 8 лет</p>
+                            <p class="artist-description">
+                                Специализируется на рок и поп-музыке. 
+                                Работал с такими артистами как... 
+                                Обладатель золотых и платиновых сертификатов.
+                            </p>
+                            <button class="close-artist-card">× Закрыть</button>
                         </div>
                     </div>
-                
-                    <!-- Карточка 2 -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-text">Запись вокала</div>
-                            <div class="service-toggle">+</div>
+                    
+                    <div class="artist-full-card" id="artist2">
+                        <div class="artist-image">
+                            <img src="./images/team/Egor.jpg" alt="Савелий Мошайкин">
                         </div>
-                        <div class="service-details">
-                            <p>Профессиональная запись вокала в студийных условиях с опытным звукорежиссером.</p>
-                            <ul class="service-features">
-                                <li>Использование топовых микрофонов</li>
-                                <li>Репетиции перед записью</li>
-                                <li>Подбор оптимального дубля</li>
-                                <li>Обработка голоса</li>
-                            </ul>
-                            <a href="https://web.telegram.org/a/#5000797176" class="service-button" target="_blank">Узнать цены</a>
-                        </div>
-                    </div>
-                
-                    <!-- Карточка 3 -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-text">Сведение треков</div>
-                            <div class="service-toggle">+</div>
-                        </div>
-                        <div class="service-details">
-                            <p>Балансировка всех элементов трека для достижения профессионального звучания.</p>
-                            <ul class="service-features">
-                                <li>Коррекция уровней и панорамы</li>
-                                <li>Частотная обработка</li>
-                                <li>Работа с динамикой</li>
-                                <li>Создание пространства</li>
-                            </ul>
-                            <a href="https://web.telegram.org/a/#5000797176" class="service-button" target="_blank">Узнать цены</a>
+                        <div class="artist-info">
+                            <h3>Горный серков</h3>
+                            <p class="artist-specialty">Звукорежиссер, продюсер</p>
+                            <p class="artist-experience">Опыт: 888 лет</p>
+                            <p class="artist-description">
+                                Специализируется на рок и поп-музыке. 
+                                Работал с такими артистами как... 
+                                Обладатель золотых и платиновых сертификатов.
+                            </p>
+                            <button class="close-artist-card">× Закрыть</button>
                         </div>
                     </div>
-                
-                    <!-- Карточка 4 -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-text">Мастеринг</div>
-                            <div class="service-toggle">+</div>
-                        </div>
-                        <div class="service-details">
-                            <p>Финальная полировка вашего трека для коммерческого звучания на любых системах воспроизведения.</p>
-                            <ul class="service-features">
-                                <li>Оптимизация громкости</li>
-                                <li>Коррекция частотного баланса</li>
-                                <li>Подготовка для различных платформ</li>
-                                <li>Стерео-обработка</li>
-                            </ul>
-                            <a href="https://web.telegram.org/a/#5000797176" class="service-button" target="_blank">Узнать цены</a>
-                        </div>
-                    </div>
-                
-                    <!-- Карточка 5 -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-text">Саунд-дизайн</div>
-                            <div class="service-toggle">+</div>
-                        </div>
-                        <div class="service-details">
-                            <p>Создание уникальных звуков и эффектов для ваших проектов.</p>
-                            <ul class="service-features">
-                                <li>Дизайн ударных</li>
-                                <li>Создание синтетических звуков</li>
-                                <li>Звуковые эффекты для медиа</li>
-                                <li>Оригинальные переходы</li>
-                            </ul>
-                            <a href="https://web.telegram.org/a/#5000797176" class="service-button" target="_blank">Узнать цены</a>
-                        </div>
-                    </div>
-                
-                    <!-- Карточка 6 -->
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-text">Обучение музыке</div>
-                            <div class="service-toggle">+</div>
-                        </div>
-                        <div class="service-details">
-                            <p>Индивидуальные и групповые занятия по различным музыкальным дисциплинам.</p>
-                            <ul class="service-features">
-                                <li>Основы звукозаписи</li>
-                                <li>Работа в DAW</li>
-                                <li>Теория музыки</li>
-                                <li>Игра на инструментах</li>
-                            </ul>
-                            <a href="https://web.telegram.org/a/#5000797176" class="service-button" target="_blank">Узнать цены</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    
 
-        <section id="artists" class="artists-page">
-            <h1 class="artists-title">Наши исполнители</h1>
-            <div class="artists-grid">
-                <!-- Исполнитель 1 -->
-                <div class="artist-card">
-                    <div class="artist-image">
-                        <img src="./images/team/Egor.jpg" alt="Исполнитель 1">
+                    <div class="artist-full-card" id="artist3">
+                        <div class="artist-image">
+                            <img src="./images/team/Vadim.jpg" alt="Владимир">
+                        </div>
+                        <div class="artist-info">
+                            <h3>Владимир Новый</h3>
+                            <p class="artist-specialty">Звукорежиссер, продюсер</p>
+                            <p class="artist-experience">Возраст: 10 лет</p>
+                            <p class="artist-description">
+                                Специализируется на рок и поп-музыке. 
+                                Работал с такими артистами как... 
+                                Обладатель золотых и платиновых сертификатов.
+                            </p>
+                            <button class="close-artist-card">× Закрыть</button>
+                        </div>
                     </div>
-                    <div class="artist-info">
-                        <h3>Максим Петров</h3>
-                        <p class="artist-specialty">Звукорежиссер, продюсер</p>
-                        <p class="artist-experience">Опыт: 8 лет</p>
-                        <p class="artist-description">Специализируется на рок и поп-музыке. Работал с такими артистами как...</p>
+
+                    <div class="artist-full-card" id="artist4">
+                        <div class="artist-image">
+                            <img src="./images/team/Seva.jpg" alt="Савелий Мошайкин">
+                        </div>
+                        <div class="artist-info">
+                            <h3>Савелий Мошайкин</h3>
+                            <p class="artist-specialty">Звукорежиссер, продюсер</p>
+                            <p class="artist-experience">Опыт: 8 лет</p>
+                            <p class="artist-description">
+                                Специализируется на рок и поп-музыке. 
+                                Работал с такими артистами как... 
+                                Обладатель золотых и платиновых сертификатов.
+                            </p>
+                            <button class="close-artist-card">× Закрыть</button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Карточка 2 - Запись вокала -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-text">Запись вокала</div>
+                        <div class="service-toggle">+</div>
+                    </div>
+                    <div class="service-details">
+                        <p>Профессиональная запись вокала в студийных условиях с опытным звукорежиссером.</p>
+                        <ul class="service-features">
+                            <li>Использование топовых микрофонов</li>
+                            <li>Репетиции перед записью</li>
+                            <li>Подбор оптимального дубля</li>
+                            <li>Обработка голоса</li>
+                        </ul>
+                        
+                        <div class="service-artists">
+                            <h3>Наши специалисты по записи вокала:</h3>
+                            <div class="artist-mini-cards">
+                                <!-- Мини-карточка исполнителя 2 -->
+                                <div class="artist-mini-card" data-artist="artist2">
+                                    <img src="./images/team/Egor.jpg" alt="Максим Петров">
+                                    <div class="artist-mini-info">
+                                        <h4>Максим Петров</h4>
+                                        <p>Опыт: 8 лет</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="https://web.telegram.org/a/#5000797176" class="service-button" target="_blank">Узнать цены</a>
+                    </div>
+                    
+                    <!-- Полная карточка исполнителя (скрыта по умолчанию) -->
+                    <div class="artist-full-card" id="artist2">
+                        <div class="artist-image">
+                            <img src="./images/team/Egor.jpg" alt="Максим Петров">
+                        </div>
+                        <div class="artist-info">
+                            <h3>Максим Петров</h3>
+                            <p class="artist-specialty">Звукорежиссер, продюсер</p>
+                            <p class="artist-experience">Опыт: 8 лет</p>
+                            <p class="artist-description">
+                                Специализируется на рок и поп-музыке. 
+                                Работал с такими артистами как... 
+                                Обладатель золотых и платиновых сертификатов.
+                            </p>
+                            <button class="close-artist-card">× Закрыть</button>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Исполнитель 2 -->
-                <div class="artist-card">
-                    <div class="artist-image">
-                        <img src="./images/team/Seva.jpg" alt="Исполнитель 2">
-                    </div>
-                    <div class="artist-info">
-                        <h3>Анна Смирнова</h3>
-                        <p class="artist-specialty">Аранжировщик, композитор</p>
-                        <p class="artist-experience">Опыт: 6 лет</p>
-                        <p class="artist-description">Создает аранжировки в стилях поп, электроника, хип-хоп. Обладатель премии...</p>
-                    </div>
-                </div>
-                
-                <!-- Исполнитель 3 -->
-                <div class="artist-card">
-                    <div class="artist-image">
-                        <img src="./images/team/Vadim.jpg" alt="Исполнитель 3">
-                    </div>
-                    <div class="artist-info">
-                        <h3>Дмитрий Иванов</h3>
-                        <p class="artist-specialty">Мастеринг-инженер</p>
-                        <p class="artist-experience">Опыт: 10 лет</p>
-                        <p class="artist-description">Специалист по финальной обработке треков. Работал над альбомами для...</p>
-                    </div>
-                </div>
-                
+                <!-- Остальные карточки услуг по аналогии -->
+                <!-- ... -->
             </div>
         </section>
 
@@ -248,9 +258,13 @@
             © 2025 Музыкальная студия "PlovSosiska"
         </div>
     </footer>
+
     <script>
         document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('click', function() {
+            card.addEventListener('click', function(e) {
+                // Если клик был по мини-карточке исполнителя, не обрабатываем здесь
+                if (e.target.closest('.artist-mini-card')) return;
+                
                 // Закрываем все открытые карточки
                 document.querySelectorAll('.service-card').forEach(c => {
                     if (c !== this) {
@@ -262,25 +276,45 @@
                 this.classList.toggle('active');
             });
         });
-    </script>
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Учитываем высоту шапки
-                    behavior: 'smooth'
-                });
-            }
+        // Обработчик для мини-карточек исполнителей
+        document.querySelectorAll('.artist-mini-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.stopPropagation(); // Останавливаем всплытие, чтобы не сработал клик по service-card
+                
+                const artistId = this.getAttribute('data-artist');
+                const fullCard = document.getElementById(artistId);
+                
+                // Показываем полную карточку исполнителя
+                fullCard.style.display = 'flex';
+            });
         });
-    });
+
+        // Обработчик для кнопки закрытия полной карточки
+        document.querySelectorAll('.close-artist-card').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.closest('.artist-full-card').style.display = 'none';
+            });
+        });
+
+        // Плавный скролл для навигации
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
