@@ -710,3 +710,174 @@ a {
 .nav-link:hover::after {
     width: 100%;
 }
+
+.service-preview {
+    padding: 30px 25px;
+    text-align: center;
+    background-color: #1a1a1a;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-name {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #f0f0f0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    position: relative;
+    text-align: center;
+    text-shadow:
+        0 0 2px #fff,
+        0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.service-name::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #fff, #888, #fff);
+    opacity: 0.5;
+    border-radius: 1px;
+}   
+
+.service-brief {
+    font-size: 1.1rem;
+    color: #d0d0d0;
+    margin-bottom: 20px;
+}
+
+
+
+.artist-mini-card-prev {
+    background: rgba(40, 40, 40, 0.7);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: calc(33.333% - 10px); /* 3 карточки в ряд */
+}
+
+.artist-mini-card-prev:hover {
+    background: rgba(60, 60, 60, 0.7);
+    transform: translateY(-3px);
+}
+
+.artist-mini-card-prev img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+
+
+
+
+.artist-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.artist-preview-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    margin-bottom: 8px;
+}
+
+
+.artist-preview-name {
+    font-size: 1rem;
+    color: #ccc;
+    margin: 0;
+    text-align: center;
+}
+
+
+.service-details {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 25px;
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.service-card.active .service-details {
+    max-height: 1000px; /* достаточно большое значение */
+    padding: 0 25px 25px;
+    opacity: 1;
+}
+
+
+.expand-service-button {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.expand-service-button:hover {
+    color: #fff;
+}
+
+.expand-service-button::after {
+    content: '↓';
+    font-size: 1.2rem;
+    margin-top: 5px;
+    line-height: 1;
+}
+
+
+.artist-header-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+}
+
+.artist-header-preview:hover {
+    transform: scale(1.05);
+}
+
+.artist-preview-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid #aaa;
+    border-radius: 8px; /* квадратная рамка с лёгким скруглением */
+    margin-bottom: 10px;
+}
+
+.artist-preview-name {
+    font-size: 1rem;
+    color: #ccc;
+    text-align: center;
+}
