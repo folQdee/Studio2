@@ -166,26 +166,14 @@ a {
     box-sizing: border-box;
 }
 
-
-@media (max-width: 480px) {
-    .home-description {
-        line-height: 1.6;
-        letter-spacing: normal;
-    }
-    
-    .history-tile {
-        backdrop-filter: blur(4px);
-    }
-}
-
 /* Стили для шапки */
 .header {
     background-color: rgba(20, 20, 20, 0.95);
     color: #e0e0e0;
     padding: 15px 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     position: fixed;
     width: 100%;
     top: 0;
@@ -195,18 +183,25 @@ a {
     border-bottom: 1px solid rgba(100, 100, 100, 0.3);
 }
 
-.header-left, .header-right {
-    width: 150px;
+.header-left {
+    flex: 1;
     display: flex;
+    justify-content: flex-start;
 }
 
 .header-center {
-    flex: 1;
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
 }
+
+.header-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
 
 .logo {
     height: 50px;
@@ -214,6 +209,7 @@ a {
     max-width: 100%;
     filter: brightness(1.1) contrast(1.1);
 }
+
 
 .header-right {
     display: flex;
@@ -506,6 +502,39 @@ a {
     .artist-mini-card {
         width: 100%;
     }
+
+    .header {
+        padding: 10px 15px;
+        justify-content: space-between;
+    }
+
+    .header-left {
+        flex: none;
+    }
+
+    .header-center {
+        display: block;
+        flex: none;
+        order: -1;
+    }
+
+    .header-right {
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .social-icon {
+        margin-left: 10px; /* промежуток между иконками */
+    }
+
+    .social-icon:first-child {
+        margin-left: 0; /* чтобы первая иконка не имела лишнего отступа */
+    }
+
 }
 
 /* Стили для подвала */
