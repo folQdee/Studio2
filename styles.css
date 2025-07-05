@@ -141,30 +141,60 @@ a {
     gap: clamp(1.5rem, 3vw, 2rem);
 }
 
-.home-description {
-    font-size: clamp(1rem, 3.5vw, 1.2rem);
-    line-height: 1.7;
-    max-width: min(800px, 90vw);
-    text-align: left;
-    color: #d0d0d0;
-    font-weight: 300;
-    letter-spacing: 0.05px;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
+.quote-section {
+    background-color: #121212;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.quote-banner {
+    background-color: #000;
+    border: 2px solid #fff;
+    padding: 50px 40px;
+    max-width: 1000px;
+    width: 100%;
+    color: #ffffff;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    text-align: center;
+    font-style: italic;
+    font-weight: 800; /* максимально жирный */
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
+    text-shadow: 0 0 2px #fff; /* опционально — подсветка */
 }
 
-.history-tile {
+  
+
+.history-title {
+    font-size: 2.6rem;
+    color: #f0f0f0;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-align: center;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+  }
+  
+  .history-subtitle {
+    font-size: 1.2rem;
+    color: #cccccc;
+    text-align: center;
+    margin-bottom: 30px;
+    font-style: italic;
+  }
+  
+  .history-tile {
     background: rgba(25, 25, 25, 0.8);
-    padding: clamp(1.5rem, 4vw, 2rem);
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    max-width: min(800px, 90vw);
-    width: 100%;
-    backdrop-filter: blur(6px);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-sizing: border-box;
-}
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  
 
 /* Стили для шапки */
 .header {
@@ -266,14 +296,27 @@ a {
 
 .service-card {
     background-color: #1a1a1a;
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 0;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     transition: all 0.4s ease;
     overflow: hidden;
-    border: 1px solid rgba(100, 100, 100, 0.2);
-    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.08); /* стало чуть ярче */
+    margin-bottom: 40px; /* отделяем визуально */
+    position: relative;
 }
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    background: linear-gradient(90deg, #999, #fff, #999);
+    opacity: 0.2;
+}
+
 
 .service-header {
     padding: 25px;
@@ -305,12 +348,25 @@ a {
     transition: all 0.5s ease;
     opacity: 0;
     background-color: #1a1a1a;
+    margin-top: 30px;
 }
+
 
 .service-card.active .service-details {
     max-height: 500px;
     padding: 0 25px 25px;
     opacity: 1;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.service-details .artist-card {
+    margin-bottom: 20px;
+}
+
+.service-details .artist-card:last-of-type {
+    margin-bottom: 0;
 }
 
 .service-card.active .service-toggle {
@@ -345,11 +401,6 @@ a {
     top: -3px;
 }
 
-.service-details p {
-    color: #d0d0d0;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
 
 .service-button {
     background: linear-gradient(90deg, #ffffff, #aaaaaa);
@@ -387,48 +438,6 @@ a {
     margin-bottom: 15px;
 }
 
-.artist-mini-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.artist-mini-card {
-    background: rgba(40, 40, 40, 0.7);
-    border-radius: 8px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: calc(33.333% - 10px); /* 3 карточки в ряд */
-}
-
-.artist-mini-card:hover {
-    background: rgba(60, 60, 60, 0.7);
-    transform: translateY(-3px);
-}
-
-.artist-mini-card img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.artist-mini-info h4 {
-    font-size: 0.9rem;
-    margin: 0 0 3px;
-    color: #ffffff;
-}
-
-.artist-mini-info p {
-    font-size: 0.8rem;
-    color: #b0b0b0;
-    margin: 0;
-}
 
 .artist-full-card {
     display: none;
@@ -466,20 +475,59 @@ a {
     overflow-y: auto;
 }
 
-.close-artist-card {
-    background: #333;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: all 0.3s ease;
+.artist-card.horizontal-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px;
+}
+  
+.artist-card.horizontal-card .artist-image {
+    width: 200px;
+    height: 260px;       /* выше */
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
-.close-artist-card:hover {
-    background: #555;
+
+.artist-card.horizontal-card .artist-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
+
+.artist-card.horizontal-card .artist-info {
+    flex: 1;
+    padding: 0;
+}
+  
+.artist-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 10px; /* ← вот здесь регулируется отступ между карточками */
+    margin-top: 20px;
+}
+
+
+.static-card {
+    max-width: 100%;
+    width: 100%;
+    cursor: default;
+    pointer-events: none; /* отключаем клик */
+    box-shadow: none;
+    margin-bottom: 20px;
+}
+
+.static-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+
 
 /* Адаптивные стили */
 @media (max-width: 768px) {
@@ -499,10 +547,6 @@ a {
         border-radius: 0 0 10px 10px;
     }
     
-    .artist-mini-card {
-        width: 100%;
-    }
-
     .header {
         padding: 10px 15px;
         justify-content: space-between;
@@ -550,6 +594,22 @@ a {
 .footer-bottom {
     font-size: 0.9rem;
 }
+
+.footer-links {
+    margin-top: 8px;
+  }
+  
+  .footer-links a {
+    color: #d0d0d0;
+    text-decoration: none;
+    margin: 0 6px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: #ffffff;
+  }
+  
 
 /* Стили для блока исполнителей */
 .artists-page {
@@ -609,7 +669,7 @@ a {
 .artist-card::before {
     content: '';
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
     height: 4px;
@@ -752,39 +812,44 @@ a {
 }
 
 .service-name {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #f0f0f0;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    position: relative;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.8px;
     text-align: center;
+    padding: 14px 28px;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.02);
     text-shadow:
-        0 0 2px #fff,
-        0 0 8px rgba(255, 255, 255, 0.1);
-}
+        0 0 2px rgba(255, 255, 255, 0.2),
+        0 0 4px rgba(255, 255, 255, 0.1);
 
-.service-name::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, #fff, #888, #fff);
-    opacity: 0.5;
-    border-radius: 1px;
-}   
-
-.service-brief {
-    font-size: 1.1rem;
-    color: #d0d0d0;
+    box-shadow:
+        0 0 8px rgba(255, 255, 255, 0.6),
+        0 0 16px rgba(255, 255, 255, 0.4);
     margin-bottom: 20px;
 }
 
+.service-description {
+    font-size: 2.5rem;
+    color: #cccccc;
+    font-style: italic;
+    margin-bottom: 15px;
+    text-align: center;
+}
 
+.service-label {
+    font-size: 2rem;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    text-align: center;
+}
 
 .artist-mini-card-prev {
     background: rgba(40, 40, 40, 0.7);
@@ -808,44 +873,6 @@ a {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-}
-
-
-
-
-
-
-.artist-preview {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.artist-preview-img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ccc;
-    margin-bottom: 8px;
-}
-
-
-.artist-preview-name {
-    font-size: 1rem;
-    color: #ccc;
-    margin: 0;
-    text-align: center;
-}
-
-
-.service-details {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 25px;
-    transition: all 0.5s ease;
-    opacity: 0;
 }
 
 .service-card.active .service-details {
@@ -874,39 +901,80 @@ a {
     color: #fff;
 }
 
-.expand-service-button::after {
-    content: '↓';
-    font-size: 1.2rem;
-    margin-top: 5px;
-    line-height: 1;
+    
+
+.artist-example {
+    margin-top: 20px;
 }
 
-
-.artist-header-preview {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 10px;
-}
-
-.artist-header-preview:hover {
-    transform: scale(1.05);
-}
-
-.artist-preview-img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border: 2px solid #aaa;
-    border-radius: 8px; /* квадратная рамка с лёгким скруглением */
+.artist-example h4 {
+    font-size: 1.1rem;
+    color: #f0f0f0;
     margin-bottom: 10px;
 }
 
-.artist-preview-name {
-    font-size: 1rem;
+.example-pair {
+    margin-bottom: 15px;
+}
+
+.example-label {
+    font-size: 0.95rem;
     color: #ccc;
-    text-align: center;
+    margin-bottom: 5px;
+}
+
+.artist-example audio {
+    width: 100%;
+    background-color: #000;
+    border-radius: 8px;
+    padding: 6px;
+    outline: none;
+    border: 1px solid #444;
+    color-scheme: dark; /* включает темную цветовую схему для встроенных элементов */
+}
+
+.custom-audio-player {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #111;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    margin-bottom: 15px;
+}
+
+.play-pause-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.play-pause-btn:hover {
+    transform: scale(1.1);
+}
+
+.audio-track {
+    flex: 1;
+    height: 6px;
+    background: #444;
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.audio-progress {
+    height: 100%;
+    background: #fff;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.audio-time {
+    font-size: 0.9rem;
+    color: #aaa;
+    min-width: 40px;
 }

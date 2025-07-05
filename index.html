@@ -6,6 +6,59 @@
     <title>Музыкальная студия PlovSosiska</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
+<script>
+    document.querySelectorAll('.custom-audio-player').forEach(player => {
+        const audio = new Audio(player.dataset.audio);
+        const btn = player.querySelector('.play-pause-btn');
+        const progress = player.querySelector('.audio-progress');
+        const time = player.querySelector('.audio-time');
+        const track = player.querySelector('.audio-track');
+    
+        let isPlaying = false;
+    
+        btn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                // Остановить другие плееры
+                document.querySelectorAll('.custom-audio-player').forEach(p => {
+                    if (p !== player) p.querySelector('.play-pause-btn').textContent = '▶';
+                });
+                document.querySelectorAll('audio').forEach(a => a.pause());
+    
+                audio.play();
+            }
+        });
+    
+        audio.addEventListener('play', () => {
+            isPlaying = true;
+            btn.textContent = '⏸';
+        });
+    
+        audio.addEventListener('pause', () => {
+            isPlaying = false;
+            btn.textContent = '▶';
+        });
+    
+        audio.addEventListener('timeupdate', () => {
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progress.style.width = percent + '%';
+            const minutes = Math.floor(audio.currentTime / 60);
+            const seconds = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
+            time.textContent = `${minutes}:${seconds}`;
+        });
+    
+        track.addEventListener('click', e => {
+            const rect = track.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            const percent = clickX / width;
+            audio.currentTime = percent * audio.duration;
+        });
+    });
+    </script>
+    
 <body>
 
     <header class="header">
@@ -39,326 +92,140 @@
                     <p class="home-subtitle">
                         Мы создаём музыку, объединяем талантливых людей и помогаем воплощать творческие идеи.
                     </p>
-                </div>
+                </div>                
             </div>
         </div>
     </section>
 
+    <section class="quote-section">
+        <div class="quote-banner">
+          <p>Музыка — это язык, на котором говорит душа. Всё, что мы создаём, — результат честного творчества и совместной энергии.</p>
+        </div>
+    </section>
+      
+
     <main class="main-content">
         <section id="services" class="services-page">
             <h1 class="services-title">Наши услуги</h1>
-            <div class="services-grid">                    
-                    <!-- Полные карточки всех специалистов (скрыты по умолчанию) -->
-                    <div class="artist-full-card" id="artist1">
-                        <div class="artist-image">
-                            <img src="./images/team/Seva.jpg" alt="">
-                        </div>
-                        <div class="artist-info">
-                            <h3>Всеволов Шуйу</h3>
-                            <p class="artist-specialty">Звукорежиссер, продюсер</p>
-                            <p class="artist-experience">Опыт: 8 лет</p>
-                            <p class="artist-description">
-                                Специализируется на рок и поп-музыке. 
-                                Работал с такими артистами как... 
-                                Обладатель золотых и платиновых сертификатов.
-                            </p>
-                            <button class="close-artist-card">× Закрыть</button>
-                        </div>
-                    </div>
-                    
-                    <div class="artist-full-card" id="artist2">
-                        <div class="artist-image">
-                            <img src="./images/team/Egor.jpg" alt="Савелий Мошайкин">
-                        </div>
-                        <div class="artist-info">
-                            <h3>Горный серков</h3>
-                            <p class="artist-specialty">Звукорежиссер, продюсер</p>
-                            <p class="artist-experience">Опыт: 888 лет</p>
-                            <p class="artist-description">
-                                Специализируется на рок и поп-музыке. 
-                                Работал с такими артистами как... 
-                                Обладатель золотых и платиновых сертификатов.
-                            </p>
-                            <button class="close-artist-card">× Закрыть</button>
-                        </div>
-                    </div>
-                    
-
-                    <div class="artist-full-card" id="artist3">
-                        <div class="artist-image">
-                            <img src="./images/team/Vadim.jpg" alt="Владимир">
-                        </div>
-                        <div class="artist-info">
-                            <h3>Владимир Новый</h3>
-                            <p class="artist-specialty">Звукорежиссер, продюсер</p>
-                            <p class="artist-experience">Возраст: 10 лет</p>
-                            <p class="artist-description">
-                                Специализируется на рок и поп-музыке. 
-                                Работал с такими артистами как... 
-                                Обладатель золотых и платиновых сертификатов.
-                            </p>
-                            <button class="close-artist-card">× Закрыть</button>
-                        </div>
-                    </div>
-
-                    <div class="artist-full-card" id="artist4">
-                        <div class="artist-image">
-                            <img src="./images/team/Seva.jpg" alt="Савелий Мошайкин">
-                        </div>
-                        <div class="artist-info">
-                            <h3>Савелий Мошайкин</h3>
-                            <p class="artist-specialty">Звукорежиссер, продюсер</p>
-                            <p class="artist-experience">Опыт: 8 лет</p>
-                            <p class="artist-description">
-                                Специализируется на рок и поп-музыке. 
-                                Работал с такими артистами как... 
-                                Обладатель золотых и платиновых сертификатов.
-                            </p>
-                            <button class="close-artist-card">× Закрыть</button>
-                        </div>
-                    </div>
-                    
-                </div>
                 
                 <!-- Карточка 1 - Аранжировка -->
                 <div class="service-card" id="service-arrangement">
                     <div class="service-preview">
-                      <h2 class="service-name">Аранжировка</h2>
-                      <p class="service-brief">Создание профессиональной аранжировки с учётом вашего стиля.</p>
-                      <p class="service-brief">Курирует:</p>
-                  
-                      <!-- Специалист-превью — с тем же классом и data-artist -->
-                      <div class="artist-header-preview" data-artist="artist1">
-                        <img src="./images/team/Seva.jpg" alt="Всеволов Ангуйай" class="artist-preview-img">
-                        <p class="artist-preview-name">Всеволов Ангуйай</p>
-                      </div>
-                                            
-                  
-                      <!-- Кнопка раскрытия -->
-                      <button class="expand-service-button">Узнать больше</button>
+                    <h2 class="service-name">Аранжировка</h2>
+                    <p class="service-description">Создание профессиональной аранжировки с учётом вашего стиля.</p>
+                    <p class="service-label">Наши специалисты:</p>
+                
+                    <div class="artist-list">
+                    <!-- Одна основная карточка (как preview) -->
+                    <div class="artist-card service-artist horizontal-card">
+                        <div class="artist-image">
+                            <img src="./images/team/Seva.jpg" alt="Всеволов Ангуйай">
+                        </div>
+                        <div class="artist-info">
+                            <h3>Всеволов Ангуйай</h3>
+                            <p class="artist-specialty">Звукорежиссер</p>
+                            <p class="artist-experience">Опыт: 6 лет</p>
+                            <p class="artist-description">
+                                Специализируется на рок и поп-аранжировках. Создаёт насыщенные композиции и помогает раскрыть идеи артистов.
+                            </p>
+                        </div>
                     </div>
-                  
+                    
+                
                     <div class="service-details">
-                      <ul class="service-features">
-                        <li>Работа в различных стилях и жанрах</li>
-                        <li>Использование живых и виртуальных инструментов</li>
-                        <li>Адаптация под ваш исполнительский стиль</li>
-                        <li>Создание демо-версий</li>
-                      </ul>
-                  
-                      <div class="service-artists">
-                        <h3>Все специалисты:</h3>
-                        <div class="artist-mini-cards">
-                            <!-- Специалист 1 -->
-                            <div class="artist-mini-card" data-artist="artist1">
-                                <img src="./images/team/Seva.jpg" alt="МВА">
-                                <div class="artist-mini-info">
-                                    <h4>Всеволов Ангуйай</h4>
-                                    <p>Опыт: 6 лет</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Специалист 2 -->
-                            <div class="artist-mini-card" data-artist="artist2">
-                                <img src="./images/team/Egor.jpg" alt="Максим Петров">
-                                <div class="artist-mini-info">
-                                    <h4>Горный серков</h4>
-                                    <p>Опыт: 888 лет</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Специалист 3 -->
-                            <div class="artist-mini-card" data-artist="artist3">
-                                <img src="./images/team/Vadim.jpg" alt="Владимир">
-                                <div class="artist-mini-info">
-                                    <h4>Владимир Новый</h4>
-                                    <p>Опыт: 5 лет</p>
-                                </div>
-                            </div>
 
-                            <!-- Специалист 4 -->
-                            <div class="artist-mini-card" data-artist="artist4">
-                                <img src="./images/team/Vadim.jpg" alt="Дмитрий Иванов">
-                                <div class="artist-mini-info">
-                                    <h4>Владик Новый</h4>
-                                    <p>Опыт: 5 лет</p>
-                                </div>
+                        <div class="artist-card service-artist horizontal-card">
+                            <div class="artist-image">
+                                <img src="./images/team/Seva.jpg" alt="Всеволов Ангуйай">
+                            </div>
+                            <div class="artist-info">
+                                <h3>Всеволов Ангуйай</h3>
+                                <p class="artist-specialty">Звукорежиссер</p>
+                                <p class="artist-experience">Опыт: 6 лет</p>
+                                <p class="artist-description">
+                                    Специализируется на рок и поп-аранжировках. Создаёт насыщенные композиции и помогает раскрыть идеи артистов.
+                                </p>
                             </div>
                         </div>
-                      </div>
-                  
-                      <a href="https://web.telegram.org/a/#5000797176" class="service-button" target="_blank">Узнать цены</a>
-                    </div>
-                  </div>
+                
 
-                <!-- Карточка 2 - Сведение -->
-                <div class="service-card" id="service-arrangement">
-                    <div class="service-preview">
-                      <h2 class="service-name">Сведение</h2>
-                      <p class="service-brief">Создание профессионального сведения с учётом вашего стиля.</p>
-                      <p class="service-brief">Курирует:</p>
-                  
-                      <!-- Специалист-превью — с тем же классом и data-artist -->
-                      <div class="artist-header-preview" data-artist="artist3">
-                        <img src="./images/team/Vadim.jpg" alt="Всеволов Ангуйай" class="artist-preview-img">
-                        <p class="artist-preview-name">Владимир Нготов</p>
-                      </div>
-                  
-                      <!-- Кнопка раскрытия -->
-                      <button class="expand-service-button">Узнать больше</button>
-                    </div>
-                  
-                    <div class="service-details">
-                      <ul class="service-features">
-                        <li>Работа в различных стилях и жанрах</li>
-                        <li>Использование живых и виртуальных инструментов</li>
-                        <li>Адаптация под ваш исполнительский стиль</li>
-                        <li>Создание демо-версий</li>
-                      </ul>
-                  
-                      <div class="service-artists">
-                        <h3>Все специалисты:</h3>
-                        <div class="artist-mini-cards">
-                            <!-- Специалист 1 -->
-                            <div class="artist-mini-card" data-artist="artist1">
-                                <img src="./images/team/Seva.jpg" alt="МВА">
-                                <div class="artist-mini-info">
-                                    <h4>Всеволов Ангуйай</h4>
-                                    <p>Опыт: 6 лет</p>
-                                </div>
+                        
+                        <div class="artist-card service-artist horizontal-card">
+                            <div class="artist-image">
+                            <img src="./images/team/Vadim.jpg" alt="Владимир Новый">
                             </div>
-                            
-                            <!-- Специалист 2 -->
-                            <div class="artist-mini-card" data-artist="artist2">
-                                <img src="./images/team/Egor.jpg" alt="Максим Петров">
-                                <div class="artist-mini-info">
-                                    <h4>Горный серков</h4>
-                                    <p>Опыт: 888 лет</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Специалист 3 -->
-                            <div class="artist-mini-card" data-artist="artist3">
-                                <img src="./images/team/Vadim.jpg" alt="Владимир">
-                                <div class="artist-mini-info">
-                                    <h4>Владимир Новый</h4>
-                                    <p>Опыт: 5 лет</p>
-                                </div>
+                            <div class="artist-info">
+                            <h3>Владимир Новый</h3>
+                            <p class="artist-specialty">Аранжировщик</p>
+                            <p class="artist-experience">Опыт: 10 лет</p>
+                            <p class="artist-description">
+                                Создаёт кинематографичные аранжировки, работал с топовыми артистами СНГ.
+                            </p>
                             </div>
                         </div>
-                      </div>
-                  
-                      <a href="https://web.telegram.org/a/#5000797176" class="service-button" target="_blank">Узнать цены</a>
+                        
+                    <a href="https://web.telegram.org/a/#5000797176" class="service-button" target="_blank">Узнать цены</a>
                     </div>
-                  </div>
-                  
-                  
-            </div>
-        </section>
 
-        <section id="history">
-            <div class="home-history">
-                <div class="history-tile">
-                    <p class="home-description">Если бы мне кто-то пару лет назад сказал, что я стану одним из основателей музыкального объединения, где люди со всей России будут предлагать свои услуги — от сведения до аранжировки, — я бы не поверил. Всё началось довольно банально: мы с друзьями, обычные 20-летние парни, сидели на кухне после репетиции и жаловались, как сложно найти нормального звукаря или аранжировщика, особенно если ты не из Москвы или Питера.</p>
-                </div>
-                <div class="history-tile">
-                    <p class="home-description">У каждого из нас был свой опыт: кто-то пытался записывать демки в родном Владивостоке, кто-то монтировал треки в Перми, а кто-то вообще учился делать мастеринг по туториалам на YouTube в маленьком городке под Тулой. Мы поняли, что таких, как мы, по стране тысячи — талантливых, но разбросанных и не соединённых между собой.</p>
-                </div>
-                <div class="history-tile">
-                    <p class="home-description">В какой-то момент я ляпнул: "А что если сделать платформу, где каждый сможет предложить свои услуги — сведение, аранжировку, написание текстов, что угодно? И чтобы не было этого ощущения, что ты один в поле воин". Ребята загорелись. Мы придумали название — "Loud & Clear".</p>
+                    <button class="expand-service-button">
+                        <span class="expand-text">Все специалисты</span>
+                        <span class="expand-icon">↓</span>
+                      </button>
+                      
                 </div>
             </div>
+            </div>
         </section>
-
     </main>
     
     <footer class="footer">
         <div class="footer-bottom">
-            © 2025 Музыкальная студия "PlovSosiska"
+          © 2025 Музыкальная студия "PlovSosiska"
+          <div class="footer-links">
+            <a href="https://t.me/yourusername" target="_blank">Telegram</a> ·
+            <a href="https://vk.com/yourpage" target="_blank">VK</a> ·
+            <a href="mailto:studio@example.com">Email</a>
+          </div>
         </div>
     </footer>
 
     <script>
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                // Если клик был по мини-карточке исполнителя, не обрабатываем здесь
-                if (e.target.closest('.artist-mini-card')) return;
-                
-                // Закрываем все открытые карточки
-                document.querySelectorAll('.service-card').forEach(c => {
-                    if (c !== this) {
-                        c.classList.remove('active');
-                    }
-                });
-                
-                // Открываем/закрываем текущую карточку
-                this.classList.toggle('active');
-            });
-        });
-
-        // Обработчик для мини-карточек исполнителей
-        document.querySelectorAll('.artist-mini-card, .artist-header-preview').forEach(card => {
-            card.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const artistId = this.getAttribute('data-artist');
-                const fullCard = document.getElementById(artistId);
-                if (fullCard) {
-                    fullCard.style.display = 'flex';
-                }
-            });
-        });
-
-
-        // Обработчик для кнопки закрытия полной карточки
-        document.querySelectorAll('.close-artist-card').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                this.closest('.artist-full-card').style.display = 'none';
-            });
-        });
-
-        document.querySelectorAll('.expand-service-button').forEach(button => {
+       document.querySelectorAll('.expand-service-button').forEach(button => {
         button.addEventListener('click', function (e) {
             e.stopPropagation();
             const card = this.closest('.service-card');
+            const textSpan = this.querySelector('.expand-text');
+            const iconSpan = this.querySelector('.expand-icon');
 
-            // Если уже активна — скрыть
-            if (card.classList.contains('active')) {
-                card.classList.remove('active');
+            const isActive = card.classList.contains('active');
+
+            if (isActive) {
+            card.classList.remove('active');
+            textSpan.textContent = 'Все специалисты';
+            iconSpan.textContent = '↓';
             } else {
-                // Скрыть все остальные
-                document.querySelectorAll('.service-card').forEach(c => {
-                    if (c !== card) c.classList.remove('active');
-                });
-
-                // Показать текущую
-                card.classList.add('active');
-
-                // Скролл к началу карточки
-                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-
-
-
-        // Плавный скролл для навигации
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+            // Скрыть другие
+            document.querySelectorAll('.service-card').forEach(c => {
+                if (c !== card) {
+                c.classList.remove('active');
+                const btn = c.querySelector('.expand-service-button');
+                if (btn) {
+                    btn.querySelector('.expand-text').textContent = 'Все специалисты';
+                    btn.querySelector('.expand-icon').textContent = '↓';
+                }
                 }
             });
+
+            // Показать текущую
+            card.classList.add('active');
+            textSpan.textContent = 'Показать меньше';
+            iconSpan.textContent = '↑';
+
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
+        });
+
 
         // Обработка "Узнать больше" на заставке
         document.querySelectorAll('.artist-preview').forEach(preview => {
@@ -376,6 +243,7 @@
         });
         
     </script>
+    
 
 </body>
 </html>
