@@ -63,6 +63,13 @@
 
     <header class="header">
         <div class="header-left">
+            <nav class="main-nav">
+                <a href="#home" class="nav-link">Главная</a>
+                <a href="#services" class="nav-link">Услуги</a>
+                <a href="#service-selection" class="nav-link">Сделать заказ</a>
+                <a href="#why-us" class="nav-link">Почему мы?</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+            </nav>
         </div>
         
         <div class="header-center">
@@ -72,19 +79,20 @@
         </div>
         
         <div class="header-right">
-            <a href="https://t.me/your_telegram" target="_blank" rel="noopener noreferrer" class="social-icon telegram">
+            <a href="https://t.me/+zlnt-CZ4gWM0Mjky" target="_blank" rel="noopener noreferrer" class="social-icon social-icon-tg">
                 <img src="./images/socialMedia/tg.png" alt="Telegram">
             </a>
-            <a href="https://vk.com/your_vk" target="_blank" rel="noopener noreferrer" class="social-icon">
+            <a href="https://vk.com/loudclear?from=groups" target="_blank" rel="noopener noreferrer" class="social-icon social-icon-vk">
                 <img src="./images/socialMedia/vk.png" alt="VK">
             </a>
-            <a href="https://youtube.com/your_channel" target="_blank" rel="noopener noreferrer" class="social-icon youtube">
+            <a href="https://youtube.com/your_channel" target="_blank" rel="noopener noreferrer" class="social-icon social-icon-yt">
                 <img src="./images/socialMedia/youtube.png" alt="YouTube">
             </a>
         </div>
     </header>
     
-    <section id="home" class="services-page">
+    <section id="home" class="services-page section-with-bg">
+        <div class="section-bg"></div>
         <div class="home-page">
             <div class="home-overlay">
                 <div class="home-hero">
@@ -132,8 +140,7 @@
                     </div>
                     
                 
-                    <div class="service-details">
-
+                    <div class="service-details hidden-artists">
                         <div class="artist-card service-artist horizontal-card">
                             <div class="artist-image">
                                 <img src="./images/team/Seva.jpg" alt="Всеволов Ангуйай">
@@ -164,85 +171,97 @@
                             </div>
                         </div>
                         
-                    <a href="https://web.telegram.org/a/#5000797176" class="service-button" target="_blank">Узнать цены</a>
+                    </div>
+                    <button class="expand-service-button">
+                        <span class="expand-text">Показать больше</span>
+                        <span class="expand-icon">↓</span>
+                    </button>
                     </div>
 
-                    <button class="expand-service-button">
-                        <span class="expand-text">Все специалисты</span>
-                        <span class="expand-icon">↓</span>
-                      </button>
-                      
                 </div>
             </div>
             </div>
         </section>
     </main>
+
+    <section id="service-selection" class="service-selection">
+        <h2>Выберите услугу</h2>
+        <form class="service-form">
+            <div class="dropdown-wrapper">
+                <label for="service-dropdown">Услуга</label>
+                <select name="services" id="service-dropdown" required>
+                    <option value="">-- Выберите услугу --</option>
+                    <option value="arrangement">Аранжировка</option>
+                    <option value="mixing">Сведение</option>
+                    <option value="recording">Запись вокала</option>
+                    <option value="mastering">Мастеринг</option>
+                </select>
+            </div>
+            <div class="input-wrapper">
+                <label for="user-name">Имя</label>
+                <input type="text" id="user-name" name="user-name" placeholder="Ваше имя" required>
+            </div>
+            <div class="input-wrapper">
+                <label for="user-tg">Ссылка на Telegram</label>
+                <input type="url" id="user-tg" name="user-tg" placeholder="https://t.me/username" pattern="https://t.me/.*" required>
+            </div>
+            <button type="submit" class="service-button">Перейти к оформлению</button>
+        </form>
+    </section>
     
-    <footer class="footer">
+
+    <hr class="section-divider">
+
+    <section id="why-us" class="why-us">
+        <h2>Почему выбирают нас?</h2>
+        <p>
+            И тут крутой текст про что нибудь. надо растянуть пердолжние на надо растянуть пердолжние на 
+            надо растянуть пердолжние на надо растянуть пердолжние на надо растянуть пердолжние на надо растянуть пердолжние на надо растянуть пердолжние на 
+            надо растянуть пердолжние на надо растянуть пердолжние на надо растянуть пердолжние на надо растянуть пердолжние на 
+            надо растянуть пердолжние на надо растянуть пердолжние на надо растянуть пердолжние на надо растянуть пердолжние на 
+            надо растянуть пердолжние на надо растянуть пердолжние на много символов
+        </p>
+        <div class="img-block">
+            <picture>
+                <source srcset="images/studio2.webp" type="image/webp">
+                <img src="images/studio2.jpg" alt="Интерьер студии" class="responsive-img">
+            </picture>
+        </div>
+    </section>
+    
+    
+    <footer class="footer" id="contacts">
         <div class="footer-bottom">
           © 2025 Музыкальная студия "PlovSosiska"
           <div class="footer-links">
             <a href="https://t.me/404" target="_blank">Telegram</a> ·
-            <a href="https://vk.com/404" target="_blank">VK</a> ·
-            <a href="mailto:ceva.noker@gmail.com">Email</a>
+            <a href="https://vk.com/loudclear?from=groups" target="_blank">VK</a> · 
+            <a>ceva.noker@gmail.com</a>
           </div>
         </div>
     </footer>
 
+
     <script>
-       document.querySelectorAll('.expand-service-button').forEach(button => {
-        button.addEventListener('click', function (e) {
-            e.stopPropagation();
-            const card = this.closest('.service-card');
+        document.querySelectorAll('.expand-service-button').forEach(button => {
+        button.addEventListener('click', function () {
+            const artistList = this.closest('.artist-list');
+            const isExpanded = artistList.classList.toggle('expanded');
+    
             const textSpan = this.querySelector('.expand-text');
             const iconSpan = this.querySelector('.expand-icon');
-
-            const isActive = card.classList.contains('active');
-
-            if (isActive) {
-            card.classList.remove('active');
-            textSpan.textContent = 'Все специалисты';
-            iconSpan.textContent = '↓';
-            } else {
-            // Скрыть другие
-            document.querySelectorAll('.service-card').forEach(c => {
-                if (c !== card) {
-                c.classList.remove('active');
-                const btn = c.querySelector('.expand-service-button');
-                if (btn) {
-                    btn.querySelector('.expand-text').textContent = 'Все специалисты';
-                    btn.querySelector('.expand-icon').textContent = '↓';
-                }
-                }
-            });
-
-            // Показать текущую
-            card.classList.add('active');
+    
+            if (isExpanded) {
             textSpan.textContent = 'Показать меньше';
             iconSpan.textContent = '↑';
-
-            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+            textSpan.textContent = 'Показать больше';
+            iconSpan.textContent = '↓';
             }
         });
         });
-
-
-        // Обработка "Узнать больше" на заставке
-        document.querySelectorAll('.artist-preview').forEach(preview => {
-            const btn = preview.querySelector('.artist-preview-more');
-            if (!btn) return;
-
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation(); // не раскрывать всю услугу
-                const artistId = preview.getAttribute('data-artist');
-                const fullCard = document.getElementById(artistId);
-                if (fullCard) {
-                    fullCard.style.display = 'flex';
-                }
-            });
-        });
-        
     </script>
+  
     
 
 </body>
